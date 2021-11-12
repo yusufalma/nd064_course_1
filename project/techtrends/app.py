@@ -1,26 +1,58 @@
+# Edited Nov 5, 2021
 import sqlite3
 
 from flask import Flask, jsonify, json, render_template, request, url_for, redirect, flash
 from werkzeug.exceptions import abort
+import logging
 
+counter = 0
 # Function to get a database connection.
 # This function connects to database with the name `database.db`
 def get_db_connection():
-    connection = sqlite3.connect('database.db')
-    connection.row_factory = sqlite3.Row
-    return connection
+    global counter
+    connect = sqlite3.connect('database.db')
+    connect.row_factory = sqlite3.Row
+    counter += 1
+    return connect
 
 # Function to get a post using its ID
 def get_post(post_id):
-    connection = get_db_connection()
-    post = connection.execute('SELECT * FROM posts WHERE id = ?',
+    connect = get_db_connection()
+    post = connect.execute('SELECT * FROM posts WHERE id = ?',
                         (post_id,)).fetchone()
-    connection.close()
+    connect.close()
     return post
 
 # Define the Flask application
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'your secret key'
+
+# Define the healthcheck, metrics, and log checkpoint
+@app.route('/healthz')
+def healthz():
+    response = app.response_class(
+        response=json.dumps({"result":"OK - healthy"}),
+        status=200,
+        mimetype='application/json'
+    )
+
+    app.logger.info('Health check successfull')
+    return response
+
+@app.route('/metrics')
+def metrics():
+    connect = get_db_connection()
+    posts = connect.execute('SELECT * FROM posts').fetchall()
+    connect.close()
+
+    response = app.response_class(
+        response=json.dumps({"db_connection_count": counter, "post_count": len(posts)}),
+        status=200,
+        mimetype='application/json'
+    )
+
+    app.logger.info('Metrics request successfull')
+    return response
 
 # Define the main route of the web application 
 @app.route('/')
@@ -36,9 +68,10 @@ def index():
 def post(post_id):
     post = get_post(post_id)
     if post is None:
-      return render_template('404.html'), 404
+        return render_template('404.html'), 404
     else:
-      return render_template('post.html', post=post)
+        app.logger.info('Article %s retrieved', post['title'])
+        return render_template('post.html', post=post)
 
 # Define the About Us page
 @app.route('/about')
@@ -61,10 +94,24 @@ def create():
             connection.commit()
             connection.close()
 
+            app.logger.info('Article %s created', post['title'])
+
             return redirect(url_for('index'))
 
     return render_template('create.html')
 
 # start the application on port 3111
 if __name__ == "__main__":
-   app.run(host='0.0.0.0', port='3111')
+    ## stream logs to a file
+    logging.basicConfig(filename='app.log',level=logging.DEBUG)
+    app.run(host='0.0.0.0', port='3111')
+"""
+    logger = logging.getLogger("__name__")
+    logging.basicConfig( level=logging.DEBUG)
+    h1 = logging.StreamHandler(sys.stdout)
+    h1.setLevel(logging.DEBUG)
+    h2 = logging.StreamHandler(sys.stderr)
+    h2.setLevel(logging.ERROR)
+    logger.addHandler(h1)
+    logger.addHandler(h2)
+"""

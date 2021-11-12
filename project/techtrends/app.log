@@ -1,0 +1,118 @@
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://192.168.43.172:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:20:50] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:20:50] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:app:Health check successfull
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:21:46] "GET /healthz HTTP/1.1" 200 -
+INFO:app:Metrics request successfull
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:21:59] "GET /metrics HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:22:11] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:22:11] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:app:Article retrieved
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:35:48] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:35:48] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:36:07] "[33mGET /10 HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:36:07] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:36:17] "GET /about HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:36:17] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:36:25] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:36:25] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:app:Article created
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:36:41] "[32mPOST /create HTTP/1.1[0m" 302 -
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:36:41] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [06/Nov/2021 12:36:41] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://127.0.0.1:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:04:34] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:04:34] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+ERROR:app:Exception on /6 [GET]
+Traceback (most recent call last):
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 73, in post
+    app.logger.info('Article ', get_user(request.form['title']), ' retrieved')
+NameError: name 'get_user' is not defined
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:04:42] "[35m[1mGET /6 HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /4 [GET]
+Traceback (most recent call last):
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 73, in post
+    app.logger.info('Article ', get_user(request.form['title']), ' retrieved')
+NameError: name 'get_user' is not defined
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:04:51] "[35m[1mGET /4 HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /1 [GET]
+Traceback (most recent call last):
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 73, in post
+    app.logger.info('Article ', get_user(request.form['title']), ' retrieved')
+NameError: name 'get_user' is not defined
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:04:57] "[35m[1mGET /1 HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:05:03] "GET /about HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:05:03] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:05:09] "GET /create HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:05:09] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+ERROR:app:Exception on /create [POST]
+Traceback (most recent call last):
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 2070, in wsgi_app
+    response = self.full_dispatch_request()
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1515, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1513, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "C:\Users\Alma\AppData\Local\Programs\Python\Python38\lib\site-packages\flask\app.py", line 1499, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**req.view_args)
+  File "app.py", line 97, in create
+    app.logger.info('Article ', get_user(request.form['title']), ' created')
+NameError: name 'get_user' is not defined
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:05:16] "[35m[1mPOST /create HTTP/1.1[0m" 500 -
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://127.0.0.1:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:08:26] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:08:26] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:08:31] "GET /about HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:08:31] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:08:33] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:08:33] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:08:35] "[31m[1mGET /2 HTTP/1.1[0m" 400 -
+WARNING:werkzeug: * Running on all addresses.
+   WARNING: This is a development server. Do not use it in a production deployment.
+INFO:werkzeug: * Running on http://127.0.0.1:3111/ (Press CTRL+C to quit)
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:10:31] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:10:31] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:10:39] "GET /about HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:10:39] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:10:40] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:10:41] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:11:53] "GET /2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:11:53] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:18:00] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:18:00] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:19:47] "GET /2 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:19:48] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:20:37] "GET / HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:20:37] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:25:13] "GET /1 HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [08/Nov/2021 05:25:13] "[36mGET /static/css/main.css HTTP/1.1[0m" 304 -
