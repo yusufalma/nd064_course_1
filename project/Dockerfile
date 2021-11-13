@@ -2,7 +2,7 @@ FROM python:2.7
 LABEL maintainer="Alma Vita Sophia"
 EXPOSE 3111
 
-COPY ./techtrends /app
+COPY . /app
 WORKDIR /app
 RUN pip install -r requirements.txt
 
