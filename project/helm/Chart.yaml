@@ -1,0 +1,9 @@
+apiVersion: v1
+name: techtrends 
+description: Install TechTrends news sharing deployment
+keywords:
+- techtrends
+version: 1.0.0
+maintainers:
+- name: Alma Vita Sophia a.k.a Yusuf
+  email: yusuf.alma@gmail.com
