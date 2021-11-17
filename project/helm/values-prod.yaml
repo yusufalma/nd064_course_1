@@ -19,9 +19,7 @@ resources:
     memory: "256Mi"
     cpu: "500m"
 
-ports:
-  containerPort: 3111
-  protocol: TCP
+containerPort: 3111
 
 livenessProbe:
   httpGet:
