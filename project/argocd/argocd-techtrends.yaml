@@ -9,7 +9,7 @@ spec:
     server: https://kubernetes.default.svc
   project: default
   source:
-    path: project/argocd/techtrends-manifests
+    path: /project/argocd/techtrends-manifests
     repoURL: https://github.com/yusufalma/nd064_course_1 
     targetRevision: HEAD
   syncPolicy: {}
