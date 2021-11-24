@@ -69,7 +69,7 @@ def post(post_id):
     if post is None:
         return render_template('404.html'), 404
     else:
-        app.logger.info('Article %s retrieved', post['title'])
+        app.logger.info('Article retrieved!')
         return render_template('post.html', post=post)
 
 # Define the About Us page
@@ -93,7 +93,7 @@ def create():
             connection.commit()
             connection.close()
 
-            app.logger.info('Article %s created', post['title'])
+            app.logger.info('Article created!')
 
             return redirect(url_for('index'))
 
